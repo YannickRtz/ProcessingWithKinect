@@ -29,10 +29,10 @@ public class Analyser {
 		// Die erste Stelle des Ergebnisses gibt an, in welche Richtung die Bewegung stattfindet.
 		// 0 = Oben Links; 1 = Oben Rechts; 2 = Unten Links; 3 = Unten Rechts
 		// Die Beiden nachfolgenden Stellen sind die Geschwindigkeit (in Prozent der Screendiagonale).
-		if (pastValues[pointer1][0] <= pastValues[pointer2][0]) {
+		if (pastValues[pointer1][0] >= pastValues[pointer2][0]) {
 			result += 100;
 		}
-		if (pastValues[pointer1][1] <= pastValues[pointer2][1]) {
+		if (pastValues[pointer1][1] >= pastValues[pointer2][1]) {
 			result += 200;
 		}
 		result += ((distance1*100)/screenDiagonal);

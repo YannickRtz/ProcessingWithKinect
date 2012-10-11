@@ -42,7 +42,7 @@ public class Spielwiese extends PApplet {
 			counter--;
 		} else {
 			fill(60,60,60,5);
-			rect(0, 0, customWidth, customHeight);
+			rect(0, 0, width, height);
 			noStroke();
 			fill(6*analyserValue2,255-analyserValue2*6,0);
 			ellipse(mouseX,mouseY,15,15);
@@ -50,7 +50,7 @@ public class Spielwiese extends PApplet {
 		
 		// Framerate und Analysewerte anzeigen
 		fill(0);
-		rect(0,0,customWidth,45);
+		rect(0,0,width,45);
 		fill(255); // white float frameRate
 		text(frameRate,5,35);
 		text(analyserValue1,200,35);
