@@ -3,11 +3,11 @@ import processing.core.*;
 @SuppressWarnings("serial") //Entfernt nur die serializable-Warnung aus Eclipse
 public class Spielwiese extends PApplet {
 	
-	int customWidth = 400;
-	int customHeight = 400;
+	int customWidth = 1024;
+	int customHeight = 768;
 	int counter = 0;
 	int analyserValue1 = 0;
-	int analyserValue2 = 0;
+	int analyserSpeed = 0;
 	DigitalesRauschen rauschen = new DigitalesRauschen(this,200,200);
 	Analyser analyser = new Analyser(this);
 	PFont arial;
@@ -32,8 +32,8 @@ public class Spielwiese extends PApplet {
 	// Draw-Methode
 	@Override
 	public void draw() {
-		analyserValue1 = analyser.analyseSpeed(mouseX, mouseY);
-		analyserValue2 = analyserValue1%100;
+		analyser.analyseMovement(mouseX, mouseY);
+		analyserSpeed = analyser.getSpeed();
 		if (counter > 0) {
 			rauschen.rauschen();
 			counter--;
@@ -44,7 +44,7 @@ public class Spielwiese extends PApplet {
 			fill(60,60,60,5);
 			rect(0, 0, width, height);
 			noStroke();
-			fill(6*analyserValue2,255-analyserValue2*6,0);
+			fill(8*analyserSpeed,255-analyserSpeed*8,0);
 			ellipse(mouseX,mouseY,15,15);
 		}
 		
@@ -53,7 +53,8 @@ public class Spielwiese extends PApplet {
 		rect(0,0,width,45);
 		fill(255); // white float frameRate
 		text(frameRate,5,35);
-		text(analyserValue1,200,35);
+		text(analyserSpeed,200,35);
+		text(analyser.getDirection(),300,35);
 	}
 	
 	// Mausklick-Methode
