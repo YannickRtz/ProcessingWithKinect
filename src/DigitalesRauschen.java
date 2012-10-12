@@ -1,5 +1,8 @@
-import processing.core.*;
+
+// Diese Testklasse ist unwichtig und ist nur Teil der "Spielwiese"
+
 import java.util.Random;
+import processing.core.PApplet;
 
 public class DigitalesRauschen {
 	int spalten;

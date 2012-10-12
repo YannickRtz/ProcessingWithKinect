@@ -1,3 +1,6 @@
+
+// Diese Klasse soll die Daten der Kinect in nutzbare Informationen umwandeln
+
 import processing.core.PApplet;
 
 

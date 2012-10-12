@@ -1,4 +1,9 @@
-import processing.core.*;
+
+// Diese Klasse dient nur zum Testen, zum Beispiel der Analyser Klasse
+
+import processing.core.PApplet;
+import processing.core.PFont;
+
 
 @SuppressWarnings("serial") //Entfernt nur die serializable-Warnung aus Eclipse
 public class Spielwiese extends PApplet {
