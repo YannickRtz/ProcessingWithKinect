@@ -14,7 +14,8 @@ public class MainClass extends PApplet {
 	int defaultHeight = 768;
 	int counter = 0;
 	PFont arial;
-	StarrySky starrySky = new StarrySky(this);
+	Analyser analyser;
+	StarrySky starrySky = new StarrySky(this,analyser);
 	
 	
 	// Setup
@@ -31,7 +32,7 @@ public class MainClass extends PApplet {
 	// Hier beginnt die "Dauerschleife"
 	@Override
 	public void draw() {
-		if(counter < 1200) { 				//Bei 60fps 20 Sekunden Ausführung des ersten Parts
+		if(counter < 1500 && counter > 300) { 				//Bei 60fps 20 Sekunden Ausführung des ersten Parts
 			starrySky.iterate(counter);
 		} else if (counter >= 1200) {  		// Am Ende des "Programms" Zurücksetzen auf Anfang
 			counter = 0;

@@ -7,13 +7,21 @@ import processing.core.PApplet;
 public class StarrySky {
 	
 	PApplet p; 	// Parent-Applet
+	Analyser analyser;
+	Star[] stars = new Star[40];
 
-	public StarrySky(PApplet mainClass) {
+	public StarrySky(PApplet mainClass,Analyser analyser) {
 		p = mainClass;
+		this.analyser = analyser;
+		for (Star star : stars) {
+			star = new Star(p,analyser);
+		}
 	}
 	
 	public void iterate(int c) {  // C ist der globale Counter
-		p.ellipse(p.mouseX, p.mouseY, 20, 20);
+		for (Star star : stars) {
+			star.shine();
+		}
 	}
 
 }
