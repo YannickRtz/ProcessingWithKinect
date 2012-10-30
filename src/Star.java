@@ -11,6 +11,9 @@ public class Star {
 	int x = 0;
 	int y = 0;
 	int twinkle = 0;
+	int moving = 0;
+	int direction = 1;
+	int distance = 0;
 	
 	public Star(PApplet mainClass,Analyser analyser) {
 		p = mainClass;
@@ -21,13 +24,21 @@ public class Star {
 	}
 	
 	void shine() {
-		if (PApplet.dist(x, y, p.mouseX, p.mouseY) < 100) {
+		distance = (int) PApplet.dist(x, y, p.mouseX, p.mouseY);
+		if (analyser.getSpeed() > 30 && distance < 30) {
+			moving = 8;
+			direction = analyser.getDirection();
+		}
+		if (moving > 0) {
+			move();
+		}
+		if (distance < 100) {
 			twinkle();
 		} else {
-			if (size < 4) {
+			if (size < 5) {
 				p.stroke(60);
 				p.point(x, y);
-			} else if (size < 5) {
+			} else if (size < 6) {
 				p.stroke(255);
 				p.point(x, y);
 				p.point(x, y-1);
@@ -63,11 +74,41 @@ public class Star {
 	}
 	
 	void move() {
-		
-	}
-	
-	void shoot() {
-		
+		switch (direction) {
+          	case 1:
+          		x = x + (int)(moving/2);
+          		y = y - (moving);
+          		break;
+          	case 2:
+          		x = x + (moving);
+          		y = y - (int)(moving/2);
+          		break;
+          	case 3:
+          		x = x + moving;
+          		y = y + (int)(moving/2);
+          		break;
+          	case 4:
+          		x = x + (int)(moving/2);
+          		y = y + (moving);
+          		break;
+          	case 5:
+          		x = x - (int)(moving/2);
+          		y = y + (moving);
+          		break;
+          	case 6:
+          		x = x - moving;
+          		y = y + (int)(moving/2);
+          		break;
+          	case 7:
+          		x = x - moving;
+          		y = y - (int)(moving/2);
+          		break;
+          	case 8:
+          		x = x - (int)(moving/2);
+          		y = y - (moving);
+          		break;
+        }
+		moving--;
 	}
 	
 }

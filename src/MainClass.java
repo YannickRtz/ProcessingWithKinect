@@ -2,7 +2,7 @@
 // Diese ist die Steuernde Klasse, sie enthält die Main-Methode, zeichnet selbst aber nichts
 // (bis auf Debug-Informationen)
 
-import SimpleOpenNI.SimpleOpenNI;
+//import SimpleOpenNI.SimpleOpenNI;
 import processing.core.PApplet;
 import processing.core.PFont;
 
@@ -17,7 +17,7 @@ public class MainClass extends PApplet {
 	PFont arial;
 	Analyser analyser = new Analyser(this);
 	StarrySky starrySky = new StarrySky(this,analyser);
-	public SimpleOpenNI context;
+//	public SimpleOpenNI context;
 	
 	// Setup
 	@Override
@@ -29,15 +29,15 @@ public class MainClass extends PApplet {
 		arial = createFont("Arial",48);
 		textFont(arial,30); 				// Oversampled Font
 		
-		context = new SimpleOpenNI(this,SimpleOpenNI.RUN_MODE_MULTI_THREADED);
-		context.enableDepth();
-		context.setMirror(true);
-		if(context.enableDepth() == false){
-			println("Can't open the depthMap, maybe the camera is not connected!"); 
-			// exit program if kinect not connected
-			//exit();
-			return;
-		}
+//		context = new SimpleOpenNI(this,SimpleOpenNI.RUN_MODE_MULTI_THREADED);
+//		context.enableDepth();
+//		context.setMirror(true);
+//		if(context.enableDepth() == false){
+//			println("Can't open the depthMap, maybe the camera is not connected!"); 
+//			// exit program if kinect not connected
+//			//exit();
+//			return;
+//		}
 		
 	}
 	
@@ -61,6 +61,7 @@ public class MainClass extends PApplet {
 		text(mouseY,280,35);
 		text(analyser.getSpeed(),400,35);
 		text(analyser.getDirection(),480,35);
+		
 		counter++;
 	}
 	

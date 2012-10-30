@@ -2,7 +2,7 @@
 // Diese Klasse soll die Daten der Kinect in nutzbare Informationen umwandeln
 
 import processing.core.PApplet;
-import SimpleOpenNI.*;
+//import SimpleOpenNI.*;
 
 public class Analyser{
 	PApplet p;
@@ -73,31 +73,31 @@ public class Analyser{
 		return direction;
 	}
 	
-	public boolean pointInArea(SimpleOpenNI context, int x, int y, int area){
-		context.update();
-		int min, max;
-		boolean rueck = false;
-		
-		//man kann das sicherlich auch anders machen, indem man direkt den min und max wert uebergibt...
-		if(area == 1){
-			min = 400;
-			max = 800;
-		}else if(area == 2){
-			min = 700;
-			max = 1000;			
-		}
-		else{
-			min = 800;
-			max = 1500;
-		}
-		
-		int[]   depthMap = context.depthMap();
-		//ich weiss nicht, ob die rechnung stimmt... muesste man nochmal ausprobieren
-		int index = y * context.depthWidth() + x;
-	    if(depthMap[index] > min && depthMap[index] < max ){
-	    	rueck = true;
-	    }
-		return rueck;
-	}
+//	public boolean pointInArea(SimpleOpenNI context, int x, int y, int area){
+//		context.update();
+//		int min, max;
+//		boolean rueck = false;
+//		
+//		//man kann das sicherlich auch anders machen, indem man direkt den min und max wert uebergibt...
+//		if(area == 1){
+//			min = 400;
+//			max = 800;
+//		}else if(area == 2){
+//			min = 700;
+//			max = 1000;			
+//		}
+//		else{
+//			min = 800;
+//			max = 1500;
+//		}
+//		
+//		int[]   depthMap = context.depthMap();
+//		//ich weiss nicht, ob die rechnung stimmt... muesste man nochmal ausprobieren
+//		int index = y * context.depthWidth() + x;
+//	    if(depthMap[index] > min && depthMap[index] < max ){
+//	    	rueck = true;
+//	    }
+//		return rueck;
+//	}
 }
 
