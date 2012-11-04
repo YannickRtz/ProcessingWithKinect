@@ -73,6 +73,10 @@ public class Analyser{
 		return direction;
 	}
 	
+	public int getPast(int position, int wert) {
+		return pastValues[(pointer1+(20-position))%circle][wert];
+	}
+	
 //	public boolean pointInArea(SimpleOpenNI context, int x, int y, int area){
 //		context.update();
 //		int min, max;

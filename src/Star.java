@@ -53,13 +53,15 @@ public class Star {
 	}
 	
 	void twinkle() {
-		twinkle = ((twinkle+1)%3);
+		twinkle = ((twinkle+1)%4);
 		if (twinkle == 0)
 			p.stroke(255,255,0);
-		if (twinkle == 1)
+		else if (twinkle == 1)
 			p.stroke(255,0,255);
-		if (twinkle == 2)
+		else if (twinkle == 2)
 			p.stroke(0,255,255);
+		else if (twinkle == 3)
+			p.stroke(50,50,0);
 		if (size < 4) {
 			p.point(x, y);
 		} else if (size < 5) {

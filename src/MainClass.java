@@ -23,7 +23,7 @@ public class MainClass extends PApplet {
 	@Override
 	public void setup() {
 		size(defaultWidth,defaultHeight);
-		frameRate(60);
+		frameRate(40);
 		smooth();
 		background(0);
 		arial = createFont("Arial",48);

@@ -13,6 +13,8 @@ public class StarrySky {
 	PImage skyline;
 	PImage gradient;
 	int moonTwinkle=0;
+	int shootCounter=0;
+	boolean shootDirection=false;
 	Star[] stars = new Star[400];  // Anzahl Sterne wird hier festgelegt
 
 	public StarrySky(PApplet mainClass,Analyser analyser) {
@@ -30,6 +32,19 @@ public class StarrySky {
 		p.fill(0,85);
 		p.rect(0, 0, p.width, p.height);
 		p.image(gradient,0,610);
+		
+		if (shootCounter != 0) {
+			shoot();
+		} else if (analyser.getSpeed() > 40) {
+			if (p.mouseX > 50 && p.mouseX < 950 && p.mouseY > 50 && p.mouseX < 700) {
+				shootCounter = 20;
+				if (analyser.getDirection() <= 4) {
+					shootDirection = true;  // Nach rechts
+				} else {
+					shootDirection = false; // Nach links
+				}
+			}
+		}
 		
 		int moonDistance = (int) PApplet.dist(p.mouseX, p.mouseY, 218, 156);
 		if (moonDistance <= 100 && analyser.getSpeed() < 2) {
@@ -54,6 +69,31 @@ public class StarrySky {
 	}
 	
 	void shoot() {
-		
+		p.stroke(255);
+		switch (shootCounter) {
+	      	case 1:
+	      		p.line(analyser.getPast(7,0),analyser.getPast(7,1),analyser.getPast(8,0),analyser.getPast(8,1));
+	      		p.line(analyser.getPast(6,0),analyser.getPast(6,1),analyser.getPast(7,0),analyser.getPast(7,1));
+	      		break;	      		
+	      	case 2:
+	      		p.line(analyser.getPast(9,0),analyser.getPast(9,1),analyser.getPast(10,0),analyser.getPast(10,1));
+	      		p.line(analyser.getPast(8,0),analyser.getPast(8,1),analyser.getPast(9,0),analyser.getPast(9,1));
+	      		p.line(analyser.getPast(7,0),analyser.getPast(7,1),analyser.getPast(8,0),analyser.getPast(8,1));
+	      		p.line(analyser.getPast(6,0),analyser.getPast(6,1),analyser.getPast(7,0),analyser.getPast(7,1));
+	      		break;	 
+	      	case 3:
+	      		p.line(analyser.getPast(11,0),analyser.getPast(11,1),analyser.getPast(12,0),analyser.getPast(12,1));
+	      	case 4:
+	      		p.line(analyser.getPast(10,0),analyser.getPast(10,1),analyser.getPast(11,0),analyser.getPast(11,1));
+	      	case 5:
+	      		p.line(analyser.getPast(9,0),analyser.getPast(9,1),analyser.getPast(10,0),analyser.getPast(10,1));
+	      	case 6:
+	      		p.line(analyser.getPast(8,0),analyser.getPast(8,1),analyser.getPast(9,0),analyser.getPast(9,1));
+	      	case 7:
+	      		p.line(analyser.getPast(7,0),analyser.getPast(7,1),analyser.getPast(8,0),analyser.getPast(8,1));
+	      	case 8:
+	      		p.line(analyser.getPast(6,0),analyser.getPast(6,1),analyser.getPast(7,0),analyser.getPast(7,1));
+	    }
+		shootCounter--;
 	}
 }
