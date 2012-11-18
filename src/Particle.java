@@ -8,11 +8,13 @@ class Particle {
 	  float yAccel;
 	  float thres, areaThres;
 	  float satu;
+	  float colorAR = 0;
+	  float colorST;
 	  int c;
 	  Particle(PApplet parent) {
 		p = parent;
 	    satu = 0;
-	    x = p.random(p.width);
+	    x = p.random(1024);
 	    y = p.random(p.height);
 	    xSpeed = p.random((float)0.3, 3);
 	    ySpeed = p.random((float)0.3, 2);
@@ -21,25 +23,11 @@ class Particle {
 	    areaThres = 2000;
 	    c = p.color(p.random(360), 255, 255);
 	  }
-	  void movement(Damper damper) {
+	  void movement() {
 	    ySpeed += yAccel;
 	    ySpeed = PApplet.constrain(ySpeed, -5, 5);
 	    x += xSpeed;
 	    y += ySpeed;
-	    collisionTest(damper);
-	  }
-	  void collisionTest(Damper damper){
-	    if (x<0 || x>p.width) {
-	      xSpeed = -xSpeed;
-	    }
-	    if (y>p.height) {
-	      reset();
-	    }
-	    if (y>=p.mouseY-damper.h/2 && y<=p.mouseY+damper.h/2 && x>=p.mouseX-damper.w/2 && x<=p.mouseX+damper.w/2) {
-	      y=p.mouseY-10;
-	      ySpeed =(float) (-ySpeed*0.95);
-	      satu = 255;
-	    }
 	  }
 	  void  display() {
 	    p.strokeWeight(3);
@@ -50,7 +38,7 @@ class Particle {
 	    float distance = PApplet.dist(x, y, particle_.x, particle_.y);
 	    if (distance < thres) {
 	      float averageHue = (p.hue(c)+p.hue(particle_.c))/2;
-	      p.stroke(averageHue, satu, 255, (thres-distance)*(255/thres));
+	      p.stroke(averageHue, satu, colorST, (thres-distance)*(255/thres));
 	      p.strokeWeight((thres-distance)/10);
 	      p.line(x, y, particle_.x, particle_.y);
 	    }
@@ -64,7 +52,7 @@ class Particle {
 	    if (s < areaThres && distance1<thres && distance2<thres && distance3<thres) {
 	      p.noStroke();
 	      float averageHue = (p.hue(c)+p.hue(particle1_.c)+p.hue(particle2_.c))/3;
-	      p.fill(averageHue, satu, 255, 255-(s*255/areaThres));
+	      p.fill(averageHue, satu, colorAR, colorAR-(s*255/areaThres));
 	      p.beginShape();
 	      p.vertex(x, y);
 	      p.vertex(particle1_.x, particle1_.y);
@@ -75,5 +63,18 @@ class Particle {
 	  void reset() {
 	    y = 0;
 	    satu = 0;
+	    colorAR = 0;
+	    colorST = 0; 
 	  }
+	  float getX(){
+		  return x;
+	  }
+	  float getY(){
+		  return y;
+	  }
+	  void reverseSpeedX(){
+		  xSpeed = -xSpeed;
+	  }
+	  
+	  
 	}

@@ -13,7 +13,7 @@ public class StarrySky {
 	PImage skyline;
 	PImage gradient;
 	int moonTwinkle=0;
-	int shootCounter=0;
+	int shootCounter =0;
 	boolean shootDirection=false;
 	Star[] stars = new Star[400];  // Anzahl Sterne wird hier festgelegt
 
@@ -30,8 +30,8 @@ public class StarrySky {
 	
 	public void iterate(int c) {// C ist der globale Counter
 		p.fill(0,85);
-		p.rect(0, 0, p.width, p.height);
-		p.image(gradient,0,610);
+		p.rect(0,0,p.width, p.height);
+		p.image(gradient, 0, 610);
 		
 		if (shootCounter != 0) {
 			shoot();
@@ -56,6 +56,7 @@ public class StarrySky {
 			if (moonTwinkle == 2)
 				p.tint(0, 255, 255);
 		}
+		
 		p.noStroke();
 		p.fill(0);
 		p.ellipse(210, 190, 300, 300);
